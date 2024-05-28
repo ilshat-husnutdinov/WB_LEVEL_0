@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: "wb-service"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/postgresql/data
+  
+  nats-streaming:
+    image: nats-streaming:latest
+    restart: always
+    ports: 
+      - "4222:4222"
+  
+volumes:
+  db-data:

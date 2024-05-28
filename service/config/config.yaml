@@ -1,0 +1,10 @@
+database:
+  DSN: "postgres://admin:admin@localhost:5432/wb-service"
+stan:
+  cluster_id: "test-cluster"
+  client_id: "stan-sub"
+  subject: "orders"
+  durable: "service-durable"
+http_server:
+  address: "0.0.0.0:8082"
+ 
